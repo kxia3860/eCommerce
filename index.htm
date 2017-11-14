@@ -1,0 +1,276 @@
+<!doctype HTML>
+<html>
+    <head>
+        <title> Kittys Knit Sweaters </title>
+
+        <style>
+        body{
+            background-color:rgb(214, 191, 191);
+        }
+        h1{
+            color: rgb(77, 1, 27);
+            text-align: center;
+            text-decoration: underline;
+            text-shadow: 3px 2px white;
+            font-size: 50px;
+        }
+        p{outline-color:grey;}
+        p.double{outline-style: double;}
+
+        p{
+            font-size: 20px;
+        }
+        p1{
+            color: rgb(77,1,27);
+            text-decoration: underline;
+            font-size: 23px;
+            text-shadow: 3px 2px white;
+        }
+        ul.a{
+            list-style-type: circle;
+            font-size:18px;
+        }
+        span{
+            font-size:20px;
+        }
+        input{
+            font-size:15px;
+        }
+        button{
+            font-size: 15px;
+        }
+        table,td,th{
+            border: 1px solid grey;
+        }
+        table{
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th{
+            text-align: center;
+        }
+        tr{
+            text-align: center;
+            font-size: 18px;
+        }
+        #output{
+            font-size: 20px;
+        }
+        </style>
+
+
+        <script>
+            var pr1 = 42, Wpr1= 16;
+            var pr2 = 38, Wpr2= 15;
+            var pr3 = 45, Wpr3= 18;
+            var taxRate = 8.75;
+
+            function initPrices(){
+                document.getElementById("span1").innerHTML = "Price: $" + pr1;
+                document.getElementById("span2").innerHTML = "Price: $" + pr2; 
+                document.getElementById("span3").innerHTML = "Price: $" + pr3;  
+            }
+
+            function ProcessOrder(){
+                var op = document.getElementById("output");
+                var qty1 = parseInt (document.getElementById("qty1").value);
+                var qty2 = parseInt (document.getElementById("qty2").value);
+                var qty3 = parseInt (document.getElementById("qty3").value);
+                var CustSub = (pr1*qty1)+(pr2*qty2)+(pr3*qty3);
+                var CompanySubTotal = (Wpr1*qty1)+(Wpr2*qty2)+(Wpr3*qty3);
+                var Profit = CustSub - CompanySubTotal;
+                var TotalItem = qty1+qty2+qty3;
+                var Tax = parseFloat((CustSub * taxRate/100).toFixed(2));
+                var Shipping;
+            
+            if(CustSub < 100){
+                Shipping = 25
+            }else if(CustSub >= 100 && CustSub <= 200){
+                Shipping = 10
+            }else{
+                Shipping = 0
+            }
+            var CustTotal = CustSub + Tax + Shipping;
+
+            var build = " ";
+            build += "<br><hr>";
+            build += "<u> Customer Information </u> <br>";
+            build += "Subtotal: $" + CustSub + "<br>";
+            build += "Tax: $" + Tax + "<br>";
+            build += "Shipping: $" + Shipping + "<br>";
+            build += "Total: $" + CustTotal + "<br><hr>";
+            build += "<u> Company Information </u><br>";
+            build += "Customer Subtotal: $" + CustSub + "<br>";
+            build += "Company Subtotal: $" + CompanySubTotal + "<br>";
+            build += "Profit: $" + Profit + "<br>";
+            build += "Total Items Sold: " + TotalItem;
+            op.innerHTML = build;
+            }
+
+        </script>
+
+    </head>
+    <body onload="initPrices()">
+        <h1> Kittys Knit Sweaters</h1>
+        <!-- Item 1 -->
+        <div>
+            <img src ="Maroon.png"><br>
+            <p1>Item Description</p1><br>
+            <p class = "double" > This is a maroon V-neck knit sweater with rolled up sleeves. The front side is<br>
+                slightly shorter than the back and has a "U" shaped curve on the bottom giving<br>
+                it a flowy look. </p>
+            <p1>Size Chart</p1>
+            <table> 
+                <tr>
+                    <th>Size</th>
+                    <th>Bust</th>
+                    <th>Waist</th>
+                    <th>Hips</th>
+                </tr>
+                <tr>
+                    <td>S</td>
+                    <td>34-35</td>
+                    <td>26-27</td>
+                    <td>35-36</td>
+                </tr>
+                <tr>
+                    <td>M</td>
+                    <td>36-37</td>
+                    <td>28-29</td>
+                    <td>38-40</td>
+                </tr>
+                <tr>
+                    <td>L</td>
+                    <td>38-39</td>
+                    <td>30-31</td>
+                    <td>42-44</td>
+                </tr>
+                <tr>
+                    <td>XL</td>
+                    <td>40-41</td>
+                    <td>32-33</td>
+                    <td>46-48</td>
+                </tr>
+            </table><br>            
+            <p1>Sizes Avaliable: </p1>
+            <ul class = "a">
+                <li>Small</li>
+                <li>Medium</li>
+                <li>Large</li>
+                <li>X-Large</li>
+            </ul>
+            <span id = "span1"></span><br>
+            <input type = "text" id = "qty1" placeholder = "Enter quantity #">
+        </div>
+
+        <hr>
+        <!-- Item 2 -->
+        <div>
+            <img src ="Brown.png" ><br>
+            <p1>Item Description</p1><br>
+            <p class = "double"> This is a brown knit sweater that is semi-cropped with knitted pattern designs.<br>
+                The bottom is slightly cuffed giving it a tighter fit on the waist, same goes for<br>
+                the sleeve ends. </p>
+            <p1>Size Chart</p1>
+            <table> 
+                <tr>
+                    <th>Size</th>
+                    <th>Bust</th>
+                    <th>Waist</th>
+                    <th>Hips</th>
+                </tr>
+                <tr>
+                    <td>S</td>
+                    <td>34-35</td>
+                    <td>26-27</td>
+                    <td>35-36</td>
+                </tr>
+                <tr>
+                    <td>M</td>
+                    <td>36-37</td>
+                    <td>28-29</td>
+                    <td>38-40</td>
+                </tr>
+                <tr>
+                    <td>L</td>
+                    <td>38-39</td>
+                    <td>30-31</td>
+                    <td>42-44</td>
+                </tr>
+                <tr>
+                    <td>XL</td>
+                    <td>40-41</td>
+                    <td>32-33</td>
+                    <td>46-48</td>
+                </tr>
+            </table><br>            
+            <p1>Sizes Avaliable: </p1>
+            <ul class = "a">
+                <li>Small</li>
+                <li>Medium</li>
+                <li>Large</li>
+                <li>X-Large</li>
+            </ul>
+            <span id = "span2"></span><br>
+            <input type = "text" id = "qty2" placeholder = "Enter quantity #">
+        </div>
+
+        <hr>
+        <!-- Item 3 -->
+        <div>
+            <img src ="Green.png"><br>
+            <p1>Item Description</p1><br>
+            <p class = "double"> This is a basic olive green knit sweater. It is a loose sweater with the sleeve <br>
+                ends slightly cuffed. The sweater comes in as more of a loose flowy style<br>
+                with its baggy sleeves and length.</p>
+            <p1>Size Chart</p1>
+            <table> 
+                <tr>
+                    <th>Size</th>
+                    <th>Bust</th>
+                    <th>Waist</th>
+                    <th>Hips</th>
+                </tr>
+                <tr>
+                    <td>S</td>
+                    <td>34-35</td>
+                    <td>26-27</td>
+                    <td>35-36</td>
+                </tr>
+                <tr>
+                    <td>M</td>
+                    <td>36-37</td>
+                    <td>28-29</td>
+                    <td>38-40</td>
+                </tr>
+                <tr>
+                    <td>L</td>
+                    <td>38-39</td>
+                    <td>30-31</td>
+                    <td>42-44</td>
+                </tr>
+                <tr>
+                    <td>XL</td>
+                    <td>40-41</td>
+                    <td>32-33</td>
+                    <td>46-48</td>
+                </tr>
+            </table><br>            
+            <p1>Sizes Avaliable: </p1>
+            <ul class = "a">
+                <li>Small</li>
+                <li>Medium</li>
+                <li>Large</li>
+                <li>X-Large</li>
+            </ul>
+            <span id = "span3"></span><br>
+            <input type = "text" id = "qty3" placeholder = "Enter quantity #">
+        </div>
+
+        <!-- Payment and processing -->
+        <br>
+        <button onclick = "ProcessOrder()"> Process Order </button>
+        <br>
+        <div id = "output"></div>
+    </body>
+</html>
